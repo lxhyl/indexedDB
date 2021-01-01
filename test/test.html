@@ -1,0 +1,31 @@
+<html>
+
+<body>
+   <button onclick="addData()">添加数据</button>
+   <button onclick="getaLL()">获取所有数据</button>
+</body>
+<script src="../src/indexdDB/index.js"></script>
+<script src="../src/utils/makeId.js"></script>
+<script>
+    window.onload = test;
+    let db;
+    async function test() {
+        const config = {
+            dbname:'test',
+            version:'2',
+            tableName:'testtable',
+            id:'id',
+        }
+        db = new Idb();
+        await db.init(config);  
+        console.log(db);
+    }
+    function addData(){
+        db.addData({id:makeId(6),data:'test'})
+    }
+    function getaLL(){
+        db.getAll().then(res => console.log(res));
+    }
+</script>
+
+</html>
